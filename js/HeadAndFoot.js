@@ -10,9 +10,9 @@ function Header() {
                 <a href="#mapa">Mapa</a>
                 <a href="#restaurantes">Restaurantes</a>
                 <div class="session">
-                    <img src="" alt="Usuario" />
-                    <a href="Iniciousr.html">Iniciar Sesión</a>
-                    <a href="Registrousr.html">Registrarse</a>
+                    <img src=""/>
+                    <a href="Login.html">Iniciar Sesión</a>
+                    <a href="SignIn .html">Registrarse</a>
                 </div>
             </div>
         </nav>
