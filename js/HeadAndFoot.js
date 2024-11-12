@@ -6,13 +6,13 @@ function Header() {
                 Lobo Croquetas
             </div>
             <div class="nav-links">
-                <a href="#inicio">Inicio</a>
-                <a href="#mapa">Mapa</a>
+                <a href="Index.html">Inicio</a>
+                <a href="#map">Mapa</a>
                 <a href="#restaurantes">Restaurantes</a>
                 <div class="session">
                     <img src=""/>
                     <a href="Login.html">Iniciar Sesión</a>
-                    <a href="SignIn .html">Registrarse</a>
+                    <a href="SignIn.html">Registrarse</a>
                 </div>
             </div>
         </nav>
