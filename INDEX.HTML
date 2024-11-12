@@ -6,7 +6,7 @@
     <title>Lobo Croquetas - Encuentra tu comida en CU BUAP</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
     <link rel="stylesheet" href="Main.css">
-<script src="FUNCIONES.js"></script>
+    <script src="FUNCIONES.js"></script>
 </head>
 <body>
     <header>
@@ -19,7 +19,11 @@
                 <a href="#inicio">Inicio</a>
                 <a href="#mapa">Mapa</a>
                 <a href="#restaurantes">Restaurantes</a>
-                <a href="#cuenta">Mi Cuenta</a>
+                <div class="session">
+                    <img src="">
+                    <a href="InicioSession.html">Iniciar session</a>
+                    <a href="Registro.html">Registrarse</a>
+                </div>
             </div>
         </nav>
     </header>
@@ -41,18 +45,47 @@
         </section>
 
         <section class="map-container">
-            <!-- Aquí irá el mapa de Google -->
-            <div id="map" style="width: 100%; height: 100%;"></div>
+            <div id="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d15089.609665649275!2d-98.20295788641185!3d19.001981222904924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sRestaurantes!5e0!3m2!1ses-419!2smx!4v1731385611246!5m2!1ses-419!2smx" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
         </section>
-
+        <br>
+        <br>
+        <center><h1>LOS LUGARES MAS VISITADOS</h1></center>
+        <hr>
+        <br>
         <section class="restaurants-grid">
             <!-- Ejemplo de tarjeta de restaurante -->
             <article class="restaurant-card">
                 <div class="restaurant-image">
-                    <img src="/api/placeholder/300/200" alt="Restaurante">
+                    <img src="img/tacos-placeros.jpg" alt="Restaurante">
                 </div>
                 <div class="restaurant-info">
-                    <h3 class="restaurant-title">Tacos El Lobo</h3>
+                    <h3 class="restaurant-title">Antojitos Vickys</h3>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>(24 reseñas)</span>
+                    </div>
+                    <div class="restaurant-details">
+                        <p><i class="fas fa-map-marker-alt"></i> A 10 min de CU</p>
+                        <p><i class="far fa-clock"></i> Abierto: 9:00 - 18:00</p>
+                    </div>
+                    <div class="price-range">
+                        <span>$40 - $80</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="restaurant-card">
+                <div class="restaurant-image">
+                    <img src="img/frulati.jpg" alt="Restaurante">
+                </div>
+                <div class="restaurant-info">
+                    <h3 class="restaurant-title">Frullatti</h3>
                     <div class="rating">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -70,6 +103,31 @@
                     </div>
                 </div>
             </article>
+
+            <article class="restaurant-card">
+                <div class="restaurant-image">
+                    <img src="img/hamburguesas.jpg" alt="Restaurante">
+                </div>
+                <div class="restaurant-info">
+                    <h3 class="restaurant-title">Burguerman</h3>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>(24 reseñas)</span>
+                    </div>
+                    <div class="restaurant-details">
+                        <p><i class="fas fa-map-marker-alt"></i> A 7 min de CU</p>
+                        <p><i class="far fa-clock"></i> Abierto: 9:00 - 18:00</p>
+                    </div>
+                    <div class="price-range">
+                        <span>$40 - $80</span>
+                    </div>
+                </div>
+            </article>
+
 
             <!-- Más tarjetas de restaurantes... -->
         </section>

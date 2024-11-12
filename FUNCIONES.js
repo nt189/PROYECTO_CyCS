@@ -6,7 +6,7 @@ const config = {
         lat: 19.0055, // Coordenadas de CU BUAP
         lng: -98.2040
     }
-};
+}; 
 
 // auth.js
 class AuthService {
