@@ -1,27 +1,29 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lobo Croquetas | Inicio de session</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+    <title>Lobo Croquetas | Registro</title>
     <link rel="stylesheet" href="Main.css">
     <style>
+      
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            box-sizing: border-box;
         }
         form {
             background: white;
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
+            max-width: 300px;
             margin: auto;
         }
-        input, select {
+        input {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
@@ -40,6 +42,8 @@
         button:hover {
             background-color: #00458f;
         }
+        
+    
     </style>
 </head>
 <body>
@@ -50,52 +54,29 @@
                 Lobo Croquetas
             </div>
             <div class="nav-links">
-                <a href="#inicio">Inicio</a>
+                <a href="INDEX.HTML">Inicio</a>
                 <a href="#mapa">Mapa</a>
                 <a href="#restaurantes">Restaurantes</a>
                 <div class="session">
                     <img src="">
-                    <a href="InicioSession.html">Iniciar session</a>
-                    <a href="Registro.html">Registrarse</a>
+                    <a href="Iniciousr.html">Iniciar Sesión</a>
+                    <a href="Registrousr.html">Registrarse</a>
                 </div>
             </div>
         </nav>
     </header>
 
     <main>
-        <center><h2>Registro de Usuarios</h2></center>
-<form id="registrationForm">
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" name="nombre" required>
+        <center><h2>Inicio de Sesión</h2></center>
+    <form id="loginForm">
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" name="correo" required>
 
-    <label for="apellidos">Apellidos:</label>
-    <input type="text" id="apellidos" name="apellidos" required>
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" id="contrasena" name="contrasena" required>
 
-    <label for="matricula">Matrícula:</label>
-    <input type="text" id="matricula" name="matricula" required>
-
-    <label for="correo">Correo:</label>
-    <input type="email" id="correo" name="correo" required>
-
-    <label for="facultad">Facultad:</label>
-    <select id="facultad" name="facultad" required>
-        <option value="">Seleccione una facultad</option>
-        <option value="ciencias">Ciencias</option>
-        <option value="ingenieria">Ingeniería</option>
-        <option value="humanidades">Humanidades</option>
-        <option value="negocios">Negocios</option>
-    </select>
-
-    <button type="submit">Registrar</button>
-</form>
-
-<script>
-    document.getElementById('registrationForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        alert('Usuario registrado correctamente');
-        // Aquí puedes manejar el envío de datos al servidor
-    });
-</script>
+        <button type="submit">Iniciar Sesión</button>
+    </form>
     </main>
 
     <footer>
@@ -128,3 +109,4 @@
     </footer>
 </body>
 </html>
+ 
