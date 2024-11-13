@@ -39,48 +39,48 @@
         <center><h1 id="restaurantes">LOS LUGARES MAS VISITADOS</h1></center>
         <hr>
         <br>
-        <section class="restaurants-grid">
-            <!-- Ejemplo de tarjeta de restaurante -->
+        <div class="restaurant-slider">
+            <!-- Tarjeta 1 -->
             <article class="restaurant-card" id="card1">
                 <div class="restaurant-image">
                     <img src="img/tacos-placeros.jpg" alt="Restaurante">
                 </div>
                 <div class="restaurant-info">
                     <h3 class="restaurant-title">Antojitos Vickys</h3>
-                    <div class="rating">           
-                        <i class="fas fa-star"></i>            
-                        <i class="fas fa-star"></i>           
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
                         <span>(24 reseñas)</span>
-                    </div>    
-                    <div class="restaurant-details">           
+                    </div>
+                    <div class="restaurant-details">
                         <p><i class="fas fa-map-marker-alt"></i> A 10 min de CU</p>
                         <p><i class="far fa-clock"></i> Abierto: 9:00 - 18:00</p>
-                    </div>           
-                        <div class="price-range">           
-                            <span>$40 - $80</span>   
-                        </div> 
-                </div>  
-                <div class="review-section" id="review-section-1">          
-                    <button class="review-btn">Ver Reseñas</button>   
-                        <div class="review-content">  
-                            <h3>Reseñas</h3> 
-                                <div class="review-item">
-                                    <p>¡Excelente comida y servicio!</p>
-                                    <p>- Usuario 1</p>
-                                </div>
-                            <div class="review-item">
-                                <p>Deliciosos antojitos, ¡lo recomiendo mucho!</p>
-                                <p>- Usuario 2</p>
-                            </div>
-                            <!-- Agrega más reseñas según sea necesario -->        
-                        </div> 
                     </div>
-                </div> 
+                    <div class="price-range">
+                        <span>$40 - $80</span>
+                    </div>
+                </div>
+                <div class="review-section" id="review-section-1">
+                    <button class="review-btn">Ver Reseñas</button>
+                    <div class="review-content">
+                        <h3>Reseñas</h3>
+                        <div class="review-item">
+                            <p>¡Excelente comida y servicio!</p>
+                            <p>- Usuario 1</p>
+                        </div>
+                        <div class="review-item">
+                            <p>Deliciosos antojitos, ¡lo recomiendo mucho!</p>
+                            <p>- Usuario 2</p>
+                        </div>
+                    </div>
+                </div>
             </article>
-            <article class="restaurant-card" id="card2">
+        
+            <!-- Tarjeta 2 -->
+            <article class="restaurant-card" id="card2" style="display: none;">
                 <div class="restaurant-image">
                     <img src="img/frulati.jpg" alt="Restaurante">
                 </div>
@@ -105,20 +105,21 @@
                 <div class="review-section" id="review-section-2">
                     <button class="review-btn">Ver Reseñas</button>
                     <div class="review-content">
-                      <h3>Reseñas</h3>
-                      <div class="review-item">
-                        <p>¡Delicioso!</p>
-                        <p>- Usuario 3</p>
-                      </div>
-                      <div class="review-item">
-                        <p>Buen servicio, recomendado</p>
-                        <p>- Usuario 4</p>
-                      </div>
+                        <h3>Reseñas</h3>
+                        <div class="review-item">
+                            <p>¡Delicioso!</p>
+                            <p>- Usuario 3</p>
+                        </div>
+                        <div class="review-item">
+                            <p>Buen servicio, recomendado</p>
+                            <p>- Usuario 4</p>
+                        </div>
                     </div>
-                  </div>
-                </article>
-            
-            <article class="restaurant-card" id="card3">
+                </div>
+            </article>
+        
+            <!-- Tarjeta 3 -->
+            <article class="restaurant-card" id="card3" style="display: none;">
                 <div class="restaurant-image">
                     <img src="img/hamburguesas.jpg" alt="Restaurante">
                 </div>
@@ -143,22 +144,24 @@
                 <div class="review-section" id="review-section-3">
                     <button class="review-btn">Ver Reseñas</button>
                     <div class="review-content">
-                      <h3>Reseñas</h3>
-                      <div class="review-item">
-                        <p>¡Delicioso!</p>
-                        <p>- Usuario 3</p>
-                      </div>
-                      <div class="review-item">
-                        <p>Buen servicio, recomendado</p>
-                        <p>- Usuario 4</p>
-                      </div>
+                        <h3>Reseñas</h3>
+                        <div class="review-item">
+                            <p>¡Delicioso!</p>
+                            <p>- Usuario 5</p>
+                        </div>
+                        <div class="review-item">
+                            <p>Buen servicio, recomendado</p>
+                            <p>- Usuario 6</p>
+                        </div>
                     </div>
-                  </div>
+                </div>
             </article>
-            <script src="js/Reseñas.js"></script>
-    
-            <!-- Más tarjetas de restaurantes... -->
-        </section> 
+        
+            <button id="prevBtn">Anterior</button>
+            <button id="nextBtn">Siguiente</button>
+        </div>
+         
+        <script src="js/Reseñas copy.js"></script>
     </main>
 
     <footer id="footer"></footer>
