@@ -117,7 +117,7 @@ main {
 }
 
 .filter-btn:hover {
-    background: #e0e0e0;
+    background: #351e1e;
 }
 
 /* Map Section */
@@ -135,6 +135,7 @@ main {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2rem;
+    flex-wrap: wrap;
 }
 
 
@@ -145,6 +146,11 @@ main {
     overflow: hidden;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
+}
+.restaurant-card.selected {
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
 }
 
 .restaurant-card:hover {
@@ -272,6 +278,7 @@ footer {
 
 /* Reseñas de restaurantes */
 .review-section {
+    
     margin-top: 20px;
   }
   
@@ -297,50 +304,4 @@ footer {
     margin-bottom: 20px;
   }
 
-        /* Estilos específicos para la vista del restaurante */
-        .restaurant-detail-view {
-            padding: 20px;
-            background-color: #f9f9f9;
-            margin: 0 auto;
-            max-width: 800px; /* Ancho máximo para el contenido */
-        }
-        .restaurant-photo {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .restaurant-photo img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-        .restaurant-description {
-            background-color: #fff;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-        .user-reviews {
-            background-color: #fff;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        .user-review {
-            margin-bottom: 10px;
-        }
-
-        .review-content {
-            display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-          }
-          
-          .review-content[style*="display: block"] {
-            opacity: 1;
-          }
-          
-          .review-content {
-            display: none;
-        }
-        
+       

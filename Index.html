@@ -14,17 +14,19 @@
     <main>
         <section class="search-section">
             <div class="search-bar">
-                <input type="text" placeholder="Buscar restaurantes, tipo de comida...">
-                <button class="btn btn-primary">Buscar</button>
+                <input type="text" id="buscador" placeholder="Buscar restaurantes, tipo de comida...">
+                 <ul id="resultados">
+                    <!-- Esta es para que nos salga una lista de los resultados con los nombres de los restaurantes-->
+                 </ul>
+
             </div>
             <div class="filters">
-                <button class="filter-btn">Todos</button>
-                <button class="filter-btn">Económico</button>
-                <button class="filter-btn">Comida Rápida</button>
-                <button class="filter-btn">Saludable</button>
-                <button class="filter-btn">Vegetariano</button>
-                <button class="filter-btn">Cerca de mí</button>
+                <h1>Lista de Categorías: </h1>
+                <h3 class="filter-btn">Antojitos Mexicanos</h3>
+                <h3 class="filter-btn">Tacos</h3>
+                <h3 class="filter-btn">Comida Rápida</h3>                
             </div>
+
         </section>
 
         <section class="map-container">
@@ -45,40 +47,39 @@
                 </div>
                 <div class="restaurant-info">
                     <h3 class="restaurant-title">Antojitos Vickys</h3>
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                    <div class="rating">           
+                        <i class="fas fa-star"></i>            
+                        <i class="fas fa-star"></i>           
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
                         <span>(24 reseñas)</span>
-                    </div>
-                    <div class="restaurant-details">
+                    </div>    
+                    <div class="restaurant-details">           
                         <p><i class="fas fa-map-marker-alt"></i> A 10 min de CU</p>
                         <p><i class="far fa-clock"></i> Abierto: 9:00 - 18:00</p>
+                    </div>           
+                        <div class="price-range">           
+                            <span>$40 - $80</span>   
+                        </div> 
+                </div>  
+                <div class="review-section" id="review-section-1">          
+                    <button class="review-btn">Ver Reseñas</button>   
+                        <div class="review-content">  
+                            <h3>Reseñas</h3> 
+                                <div class="review-item">
+                                    <p>¡Excelente comida y servicio!</p>
+                                    <p>- Usuario 1</p>
+                                </div>
+                            <div class="review-item">
+                                <p>Deliciosos antojitos, ¡lo recomiendo mucho!</p>
+                                <p>- Usuario 2</p>
+                            </div>
+                            <!-- Agrega más reseñas según sea necesario -->        
+                        </div> 
                     </div>
-                    <div class="price-range">
-                        <span>$40 - $80</span>
-                    </div>
-                </div>
-                <div class="review-section">
-                    <button class="review-btn">Ver Reseñas</button>
-                    <div class="review-content">
-                      <h3>Reseñas</h3>
-                      <div class="review-item">
-                        <p>¡Excelente comida y servicio!</p>
-                        <p>- Usuario 1</p>
-                      </div>
-                      <div class="review-item">
-                        <p>Deliciosos antojitos, ¡lo recomiendo mucho!</p>
-                        <p>- Usuario 2</p>
-                      </div>
-                      <!-- Agrega más reseñas según sea necesario -->
-                    </div>
-                  </div>
-                </div>
+                </div> 
             </article>
-            
             <article class="restaurant-card" id="card2">
                 <div class="restaurant-image">
                     <img src="img/frulati.jpg" alt="Restaurante">
@@ -101,7 +102,7 @@
                         <span>$40 - $80</span>
                     </div>
                 </div>
-                <div class="review-section">
+                <div class="review-section" id="review-section-2">
                     <button class="review-btn">Ver Reseñas</button>
                     <div class="review-content">
                       <h3>Reseñas</h3>
@@ -139,7 +140,7 @@
                         <span>$40 - $80</span>
                     </div>
                 </div>
-                <div class="review-section">
+                <div class="review-section" id="review-section-3">
                     <button class="review-btn">Ver Reseñas</button>
                     <div class="review-content">
                       <h3>Reseñas</h3>
@@ -155,9 +156,9 @@
                   </div>
             </article>
             <script src="js/Reseñas.js"></script>
-
+    
             <!-- Más tarjetas de restaurantes... -->
-        </section>
+        </section> 
     </main>
 
     <footer id="footer"></footer>
