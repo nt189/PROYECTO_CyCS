@@ -48,41 +48,36 @@
 
     <main>
         <center><h2>Registro de Usuarios</h2></center>
-<form id="registrationForm">
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" name="nombre" required>
+        <form id="registrationForm">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
 
-    <label for="apellidos">Apellidos:</label>
-    <input type="text" id="apellidos" name="apellidos" required>
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" name="apellidos" required>
 
-    <label for="matricula">Matrícula:</label>
-    <input type="text" id="matricula" name="matricula" required>
+        <label for="matricula">Matrícula:</label>
+        <input type="text" id="matricula" name="matricula" required>
 
-    <label for="correo">Correo:</label>
-    <input type="email" id="correo" name="correo" required>
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" name="correo" required>
 
-    <label for="facultad">Facultad:</label>
-    <select id="facultad" name="facultad" required>
-        <option value="">Seleccione una facultad</option>
-        <option value="ciencias">Ciencias</option>
-        <option value="ingenieria">Ingeniería</option>
-        <option value="humanidades">Humanidades</option>
-        <option value="negocios">Negocios</option>
-    </select>
+        <label for="contraseña">Contraseña:</label>
+        <input type="password" id="contraseña" name="contraseña" required>
 
-    <button type="submit">Registrar</button>
-</form>
+        <label for="facultad">Facultad:</label>
+        <select id="facultad" name="facultad" required>
+            <option value="">Seleccione una facultad</option>
+            <option value="ciencias">Ciencias</option>
+            <option value="ingenieria">Ingeniería</option>
+            <option value="humanidades">Humanidades</option>
+            <option value="negocios">Negocios</option>
+        </select>
 
-<script>
-    document.getElementById('registrationForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        alert('Usuario registrado correctamente');
-        // Aquí puedes manejar el envío de datos al servidor
-    });
-</script>
+        <button type="submit" onclick="Registro()">Registrar</button>
     </main>
 
     <footer id="footer"></footer>
 </body>
 <script src="js/HeadAndFoot.js"></script>
+<script src="js/SignIn.js"></script>
 </html>

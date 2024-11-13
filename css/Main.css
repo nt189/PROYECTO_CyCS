@@ -270,3 +270,77 @@ footer {
     }
 }
 
+/* Reseñas de restaurantes */
+.review-section {
+    margin-top: 20px;
+  }
+  
+  .review-btn {
+    display: block;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 1rem;
+  }
+  
+  .review-content {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+  
+  .review-item {
+    margin-bottom: 20px;
+  }
+
+        /* Estilos específicos para la vista del restaurante */
+        .restaurant-detail-view {
+            padding: 20px;
+            background-color: #f9f9f9;
+            margin: 0 auto;
+            max-width: 800px; /* Ancho máximo para el contenido */
+        }
+        .restaurant-photo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .restaurant-photo img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .restaurant-description {
+            background-color: #fff;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .user-reviews {
+            background-color: #fff;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .user-review {
+            margin-bottom: 10px;
+        }
+
+        .review-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+          }
+          
+          .review-content[style*="display: block"] {
+            opacity: 1;
+          }
+          
+          .review-content {
+            display: none;
+        }
+        
