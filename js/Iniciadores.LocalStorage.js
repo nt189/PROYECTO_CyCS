@@ -2,7 +2,7 @@ function iniciadorRestarantes(){
     if(!localStorage.getItem('Restaurante')){
         var Restaurantes = Array();
 
-        var Restaurante = {
+        Restaurante = {
             "Nombre": "Burguerman",
             "Imagen": "img/hamburguesas.jpg",
             "Descripcion": "Burguerman es el destino ideal para los amantes de las hamburguesas. Con un ambiente vibrante y acogedor, este restaurante se especializa en ofrecer hamburguesas gourmet hechas con ingredientes frescos y de alta calidad. Cada bocado es una explosión de sabor, con opciones que van desde las clásicas hasta combinaciones innovadoras que sorprenderán a tu paladar. ",

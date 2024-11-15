@@ -1,9 +1,10 @@
  /* Estilos específicos para la vista del restaurante */
  .restaurant-detail-view {
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     margin: 0 auto;
     max-width: 800px; /* Ancho máximo para el contenido */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 .restaurant-photo {
     text-align: center;
