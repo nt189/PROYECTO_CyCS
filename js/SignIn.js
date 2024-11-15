@@ -24,6 +24,7 @@ function Registro(){
         Usuariosaux[0]=[nombre,apellidos,matricula,correo, contraseña,facultad];
         localStorage.setItem('Usuarios', JSON.stringify(Usuariosaux));
         // alert('Se a registrado a: ' + Usuarios[i][0]);
+        window.location.href = "Login.html"
     }
     else if(Usuarios !== null && Registro2(nombre, apellidos, matricula, correo, contraseña, facultad) === 0){//hay mas de 1 ususario
         var aux; //no existe el usuario

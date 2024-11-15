@@ -19,7 +19,7 @@ function Logueo(){
         }
 
         if(aux === 1 && contraseña === Usuarios[id][4]){
-            alert("Inicio de sessión");
+            // alert("Inicio de sessión");
             sessionStorage.setItem('id',id);
             window.location.href = 'Index.html';
         }
