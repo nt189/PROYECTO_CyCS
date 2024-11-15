@@ -126,6 +126,9 @@ main {
     margin-left: 0%;
 }
 
+.filters a{
+    text-decoration: none;
+}
 .filter-btn {
     padding: 0.5rem 1rem;
     background: var(--light-gray);
@@ -133,7 +136,6 @@ main {
     border-radius: 20px;
     transition: background-color 0.3s ease;
 }
-
 
 
 /* Map Section */
