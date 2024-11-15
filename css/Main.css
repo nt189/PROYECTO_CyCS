@@ -363,7 +363,7 @@ footer {
 }
 
 /*
------------------------------------BUSCADOR
+-----------------------------------BUSCADOR------------------------------------------------------------------------
 */
 /* Estilos generales */
 * {
@@ -452,19 +452,16 @@ footer {
 
 .filter-btn {
     padding: 8px 18px; /* Un poco más de padding para un botón más amplio */
-    background-color: #3b5998; /* Azul relajado */
-    color: white;
+    color: black;
     font-size: 14px;
     border-radius: 12px; /* Bordes redondeados suaves */
     cursor: pointer;
     transition: all 0.3s ease;
     text-transform: uppercase;
-    font-weight: bold;
-    text-align: center;
 }
 
 .filter-btn:hover {
-    background-color: #2d4373; /* Azul más oscuro al pasar el cursor */
+    background-color: #e5edfc; /* Azul más oscuro al pasar el cursor */
 }
 
 .filter-btn:active {
