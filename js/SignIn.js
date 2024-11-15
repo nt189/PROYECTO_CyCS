@@ -37,6 +37,7 @@ function Registro(){
             Usuarios.push([nombre,apellidos,matricula,correo,contraseña,facultad]);
             localStorage.setItem('Usuarios', JSON.stringify(Usuarios));
             // alert('Se a registrado a: ' + Usuarios[i][4]);
+            window.location.href = "Login.html"
         }
         else{
             // alert('Usuario ya registrado');
