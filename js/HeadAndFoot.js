@@ -8,7 +8,10 @@ function Header() {
             <nav>
                 <div class="logo">
                     <i class="fas fa-utensils"></i>
-                    Lobo Croquetas
+                    <span>Lobo Croquetas</span>
+                </div>
+                <div>
+                    <center><b style="color: #ffffff; font-size: 32px;">BUAP</b></center>
                 </div>
                 <div class="nav-links">
                     <a href="Index.html">Inicio</a>
@@ -28,7 +31,10 @@ function Header() {
             <nav class="nav-nli">
                 <div class="logo">
                     <i class="fas fa-utensils"></i>
-                    Lobo Croquetas
+                    <span>Lobo Croquetas</span>
+                </div>
+                <div>
+                    <center><b style="color: #ffffff; font-size: 32px;">BUAP</b></center>
                 </div>
                 <div class="nav-links-nli">
                     <a href="Index.html">Inicio</a>

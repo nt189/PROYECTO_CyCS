@@ -34,6 +34,10 @@ function comentarios(){
                         <p><strong>Santi esteban:</strong>En los tacos me salio un pelo ¡pesimo servicio!</p>
                     </div>
                 </div>
+                <div class="restaurant-detail-view">
+                    <form><textarea style="width: 100%; height: 100%; box-sizing: border-box; "></textarea></form>
+                    <input type="button" onclcick="cargar comentario" value="Compartir" class="review-btn">
+                </div>
 
             </article>
         </section>
