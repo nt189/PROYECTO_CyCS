@@ -210,136 +210,50 @@ class MapController {
 class SearchController {
     constructor(mapController) {
         this.mapController = mapController;
-        this.restaurantService = new RestaurantService();
         this.initEventListeners();
     }
 
     initEventListeners() {
         const searchInput = document.querySelector('#search-input');
-        const filterButtons = document.querySelectorAll('.filter-btn');
-
-        searchInput.addEventListener('input', this.debounce(this.handleSearch.bind(this), 300));
-        
-        filterButtons.forEach(button => {
-            button.addEventListener('click', (e) => this.handleFilter(e));
-        });
+        if (searchInput) {
+            searchInput.addEventListener('input', this.debounce(this.buscarRestaurante.bind(this), 300));
+        }
     }
 
-    async handleSearch(event) {
-        const searchTerm = event.target.value.toLowerCase();
-        const restaurants = await this.restaurantService.getAllRestaurants();
+    buscarRestaurante() {
+        const termino = document.getElementById("search-input").value.toLowerCase();
+        const resultados = document.getElementById("resultados");
         
-        const filteredRestaurants = restaurants.filter(restaurant => 
-            restaurant.name.toLowerCase().includes(searchTerm) ||
-            restaurant.foodType.some(type => type.toLowerCase().includes(searchTerm))
+        // Limpiar los resultados en cada búsqueda
+        resultados.innerHTML = '';
+    
+        // Si el término está vacío, salir de la función para que no queden resultados
+        if (!termino) return;
+    
+        // Filtrar restaurantes
+        const coincidencias = restaurantes.filter(restaurante =>
+            restaurante.nombre.toLowerCase().includes(termino) ||
+            restaurante.tipo.toLowerCase().includes(termino)
         );
-
-        this.updateResults(filteredRestaurants);
-    }
-
-    async handleFilter(event) {
-        const filterType = event.target.dataset.filter;
-        const restaurants = await this.restaurantService.getAllRestaurants();
-        
-        let filteredRestaurants = restaurants;
-        
-        switch(filterType) {
-            case 'economic':
-                filteredRestaurants = restaurants.filter(r => r.priceRange.max <= 80);
-                break;
-            case 'healthy':
-                filteredRestaurants = restaurants.filter(r => 
-                    r.foodType.includes('Saludable') || r.foodType.includes('Vegetariano')
-                );
-                break;
-            case 'nearby':
-                filteredRestaurants = await this.getNearbyRestaurants(restaurants);
-                break;
-        }
-
-        this.updateResults(filteredRestaurants);
-    }
-
-    async getNearbyRestaurants(restaurants, maxDistance = 1000) {
-        if (!navigator.geolocation) return restaurants;
-
-        try {
-            const position = await this.getCurrentPosition();
-            const userLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-            return restaurants.filter(restaurant => {
-                const restaurantLocation = new google.maps.LatLng(
-                    restaurant.location.coordinates[0],
-                    restaurant.location.coordinates[1]
-                );
-                const distance = google.maps.geometry.spherical.computeDistanceBetween(
-                    userLocation,
-                    restaurantLocation
-                );
-                return distance <= maxDistance;
+    
+        // Mostrar resultados con enlaces a la página específica de cada restaurante
+        if (coincidencias.length > 0) {
+            coincidencias.forEach(restaurante => {
+                const li = document.createElement("li");
+                const enlace = document.createElement("a");
+                enlace.href = `${restaurante.pagina}#restaurante-${restaurante.id}`;
+                enlace.textContent = `${restaurante.nombre} - ${restaurante.tipo}`;
+                li.appendChild(enlace);
+                resultados.appendChild(li);
             });
-        } catch (error) {
-            console.error('Error getting nearby restaurants:', error);
-            return restaurants;
+        } else {
+            const li = document.createElement("li");
+            li.textContent = "No se encontraron resultados.";
+            li.classList.add("no-results"); // Clase opcional para estilo personalizado
+            resultados.appendChild(li);
         }
     }
-
-    getCurrentPosition() {
-        return new Promise((resolve, reject) => {
-            navigator.geolocation.getCurrentPosition(resolve, reject);
-        });
-    }
-
-    updateResults(restaurants) {
-        // Actualizar marcadores en el mapa
-        this.mapController.showRestaurantsOnMap(restaurants);
-        
-        // Actualizar lista de restaurantes
-        const restaurantsGrid = document.querySelector('.restaurants-grid');
-        restaurantsGrid.innerHTML = restaurants.map(restaurant => this.createRestaurantCard(restaurant)).join('');
-    }
-
-    createRestaurantCard(restaurant) {
-        return `
-            <article class="restaurant-card">
-                <div class="restaurant-image">
-                    <img src="${restaurant.image || '/api/placeholder/300/200'}" alt="${restaurant.name}">
-                </div>
-                <div class="restaurant-info">
-                    <h3 class="restaurant-title">${restaurant.name}</h3>
-                    <div class="rating">
-                        ${this.createRatingStars(restaurant.rating)}
-                        <span>(${restaurant.ratings.length} reseñas)</span>
-                    </div>
-                    <div class="restaurant-details">
-                        <p><i class="fas fa-map-marker-alt"></i> ${restaurant.address}</p>
-                        <p><i class="far fa-clock"></i> ${restaurant.schedule.opening} - ${restaurant.schedule.closing}</p>
-                    </div>
-                    <div class="price-range">
-                        <span>$${restaurant.priceRange.min} - $${restaurant.priceRange.max}</span>
-                    </div>
-                </div>
-            </article>
-        `;
-    }
-
-    createRatingStars(rating) {
-        const fullStars = Math.floor(rating);
-        const hasHalfStar = rating % 1 >= 0.5;
-        let stars = '';
-        
-        for (let i = 0; i < 5; i++) {
-            if (i < fullStars) {
-                stars += '<i class="fas fa-star"></i>';
-            } else if (i === fullStars && hasHalfStar) {
-                stars += '<i class="fas fa-star-half-alt"></i>';
-            } else {
-                stars += '<i class="far fa-star"></i>';
-            }
-        }
-        
-        return stars;
-    }
+    
 
     debounce(func, wait) {
         let timeout;

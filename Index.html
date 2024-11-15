@@ -14,24 +14,23 @@
     <main>
         <section class="search-section">
             <div class="search-bar">
-                <input type="text" id="buscador" placeholder="Buscar restaurantes, tipo de comida...">
-                 <ul id="resultados">
-                    <!-- Esta es para que nos salga una lista de los resultados con los nombres de los restaurantes-->
-                 </ul>
-
+                <input type="text" id="search-input" placeholder="Buscar restaurante" oninput="buscarRestaurante()">
+                <ul id="resultados" class="result-list"></ul>
+                    
             </div>
+            
             <div class="filters">
-                <h1>Lista de Categorías: </h1>
-                <h3 class="filter-btn">Antojitos Mexicanos</h3>
-                <h3 class="filter-btn">Tacos</h3>
-                <h3 class="filter-btn">Comida Rápida</h3>                
+                <ul>Lista de Categorías: </ul>
+                <ul class="filter-btn">Antojitos Mexicanos</ul>
+                <ul class="filter-btn">Tacos</ul>
+                <ul class="filter-btn">Comida Rápida</h3>                
             </div>
             
         </section>
-
+        
         <section class="map-container">
             <div id="map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d15089.609665649275!2d-98.20295788641185!3d19.001981222904924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sRestaurantes!5e0!3m2!1ses-419!2smx!4v1731385611246!5m2!1ses-419!2smx" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d15089.609665649275!2d-98.20295788641185!3d19.001981222904924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sRestaurantes!5e0!3m2!1ses-419!2smx!4v1731385611246!5m2!1ses-419!2smx" width="100%" height="450" style="border-radius: 18px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </section>
         <br>
@@ -40,6 +39,7 @@
         <hr>
         <br>
         <section class="restaurants-grid">
+        <div class="contenedor">
             <!-- Ejemplo de tarjeta de restaurante -->
             <article class="restaurant-card" id="card1">
                 <div class="restaurant-image">
@@ -80,6 +80,8 @@
                     </div>
                 </div> 
             </article>
+        </div>
+        <div class="Contenedor">
             <article class="restaurant-card" id="card2">
                 <div class="restaurant-image">
                     <img src="img/frulati.jpg" alt="Restaurante">
@@ -117,7 +119,8 @@
                     </div>
                   </div>
                 </article>
-            
+            </div>
+            <div class="Contenedor">
             <article class="restaurant-card" id="card3">
                 <div class="restaurant-image">
                     <img src="img/hamburguesas.jpg" alt="Restaurante">
@@ -155,6 +158,7 @@
                     </div>
                   </div>
             </article>
+        </div>
             <script src="js/Reseñas.js"></script>
     
             <!-- Más tarjetas de restaurantes... -->

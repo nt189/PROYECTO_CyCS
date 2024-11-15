@@ -12,13 +12,12 @@ function Header() {
                 </div>
                 <div class="nav-links">
                     <a href="Index.html">Inicio</a>
-                    <a href="#map">Mapa</a>
+                    <a href="Index.html#map">Mapa</a>
                     <a href="#restaurantes">Restaurantes</a>
-                    <div class="session">
-                        <img src=""/>
-                        <a href="Login.html">Iniciar Sesión</a>
-                        <a href="SignIn.html">Registrarse</a>
-                    </div>
+                    <a id="session" href="cuenta.html">
+                        <center><i class="fa-solid fa-user" style="color: #FFFFFF;"></i></center>
+                        <p sytle="">Cuenta</p>
+                    </a>
                 </div>
             </nav>
         `;
@@ -26,12 +25,12 @@ function Header() {
     }
     else{
         template = `
-            <nav>
+            <nav class="nav-nli">
                 <div class="logo">
                     <i class="fas fa-utensils"></i>
                     Lobo Croquetas
                 </div>
-                <div class="nav-links">
+                <div class="nav-links-nli">
                     <a href="Index.html">Inicio</a>
                     <a href="#map">Mapa</a>
                     <a href="#restaurantes">Restaurantes</a>
