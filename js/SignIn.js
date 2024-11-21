@@ -1,6 +1,9 @@
-function Registro2(a,b,c,d,e,f){//valida que todos los campos eten llenos
-    if(a === '' || b === '' || c === '' || d === '' || e === '' || f === ''){
+function Registro2(a,b,c,d,e,f,g){//valida que todos los campos eten llenos
+    if(a === '' || b === '' || c === '' || d === '' || e === '' || f === '' || g == ''){
         alert("Por favor rellene correctamente todos los campos");
+    }
+    else if(e !== f){
+        alert('Las contraseñas no coinciden');
     }
     else{
         return 0;
@@ -13,20 +16,21 @@ function Registro(){
     const matricula = document.getElementById('matricula').value;
     const correo = document.getElementById('correo').value;
     const contraseña = document.getElementById('contraseña').value;
+    const contraseñav = document.getElementById('contraseñav').value;
     const facultad = document.getElementById('facultad').value;
     
     let Usuarios = JSON.parse(localStorage.getItem('Usuarios'));
 
     // alert(Usuarios);
     
-    if(Usuarios === null && Registro2(nombre, apellidos, matricula, correo, contraseña, facultad) === 0){ //no hay usuarios
+    if(Usuarios === null && Registro2(nombre, apellidos, matricula, correo, contraseña, contraseñav, facultad) === 0){ //no hay usuarios
         var Usuariosaux = Array();
         Usuariosaux[0]=[nombre,apellidos,matricula,correo, contraseña,facultad];
         localStorage.setItem('Usuarios', JSON.stringify(Usuariosaux));
         // alert('Se a registrado a: ' + Usuarios[i][0]);
         window.location.href = "Login.html"
     }
-    else if(Usuarios !== null && Registro2(nombre, apellidos, matricula, correo, contraseña, facultad) === 0){//hay mas de 1 ususario
+    else if(Usuarios !== null && Registro2(nombre, apellidos, matricula, correo, contraseña, contraseñav, facultad) === 0){//hay mas de 1 ususario
         var aux; //no existe el usuario
         // alert(Usuarios[0][3] + ' ' + correo)
         for(var i=0; i<Usuarios.length ;i++){ //busca si ya existe al usuario

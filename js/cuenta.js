@@ -1,5 +1,6 @@
 function cerrarsession(){
     sessionStorage.removeItem('id')
+    window.location.href = "Index.html"
 }
 function cargadedatos(){
     var id = sessionStorage.getItem('id')
