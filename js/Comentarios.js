@@ -61,6 +61,18 @@ function cargarcomentario(){
         comaux[id] = [];
         comaux[id].push(comentario)
         localStorage.setItem('comentarios',JSON.stringify(comaux))
+
+        var template = `
+                <div>
+                    <p><strong>${usr[id][0]}</strong>:${comentarios[id][comentarios[id].length-1]}</p>
+                </div>
+            `
+
+            var div = document.createElement('div');
+            div.innerHTML = template;
+
+            var reviewsContainer = document.getElementsByClassName('user-reviews')[0]; // Obtiene el primer elemento con la clase 'user-reviews'
+            reviewsContainer.appendChild(div);
     }
 
     var template = `
