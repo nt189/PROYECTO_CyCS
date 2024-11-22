@@ -41,6 +41,7 @@ comentarios()
 
 function cargarcomentario(){
     var id = sessionStorage.getItem('id');
+    var restaurant = document.getElementById('restaurante-nombre').value;
     var comentario = document.getElementById('comentario').value;
     var usr = JSON.parse(localStorage.getItem('Usuarios'))
 
