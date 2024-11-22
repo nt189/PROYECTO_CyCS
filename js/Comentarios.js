@@ -1,47 +1,4 @@
-function comentarios(){
-    var Restaurantes = JSON.parse(localStorage.getItem('Restaurantes'));
-    var idr;
-    console.log(Restaurantes)
-
-    var template=`
-      <center><h1>${Restaurantes[0].Nombre}</h1></center>
-
-        <section class="restaurant-detail-view">
-            <article>
-                <div class="restaurant-photo">
-                    <img src="${Restaurantes[0].Imagen}" alt="hamburguesas">
-                </div>
-
-                <div class="restaurant-description">
-                    <h2 > ${Restaurantes[0].Descripcion} </h2>
-                <p>
-
-                </p>
-                </div>
-
-                <div class="user-reviews">
-                    <h3>Reseñas de usuarios:</h3>
-                    <div class="user-review">
-                        <p><strong>Juan Pérez:</strong> Excelente comida y servicio. ¡Volveré pronto!</p>
-                    </div>
-                    <div class="user-review">
-                        <p><strong>María López:</strong> Ambiente acogedor y precios razonables. Muy recomendable.</p>
-                    </div>
-                    <div class="user-review">
-                        <p><strong>Carlos Ruiz:</strong> Los tacos son los mejores que he probado. ¡Deliciosos!</p>
-                    </div>
-                    <div class="user-review">
-                        <p><strong>Santi esteban:</strong>En los tacos me salio un pelo ¡pesimo servicio!</p>
-                    </div>
-                </div>
-            </article>
-        </section>
-
-    `;
-
-    document.getElementById('mainComentarios').innerHTML = template;
-
-    // console.log(Boolean(sessionStorage.getItem('id')))
+function seccioncomentarios(){
     if (sessionStorage.getItem('id')){
         var div = document.createElement('div');
         var comentario = `
@@ -58,14 +15,76 @@ function comentarios(){
         document.getElementById('mainComentarios').appendChild(div);
     }
 }
-comentarios();
+seccioncomentarios();
+
+function comentarios(){
+    var comentarios = JSON.parse(localStorage.getItem('comentarios'));
+    var usr = JSON.parse(localStorage.getItem('Usuarios'))
+    
+    for (let id = 0; id < comentarios.length; id++) {
+        for (let com = 0; com < comentarios[id].length; com++) {
+            var template = `
+                <div>
+                    <p><strong>${usr[id][0]}</strong>:${comentarios[id][com]}</p>
+                </div>
+            `
+
+            var div = document.createElement('div');
+            div.innerHTML = template;
+
+            var reviewsContainer = document.getElementsByClassName('user-reviews')[0]; // Obtiene el primer elemento con la clase 'user-reviews'
+            reviewsContainer.appendChild(div);
+        }
+    }
+}
+comentarios()
 
 function cargarcomentario(){
+    var id = sessionStorage.getItem('id');
+    var restaurant = document.getElementById('restaurante-nombre').value;
     var comentario = document.getElementById('comentario').value;
+    var usr = JSON.parse(localStorage.getItem('Usuarios'))
 
-    Restaurante = {
-        "id": sessionStorage.getItem('id'),
-        "comentario": comentario,
-    };
+    if(localStorage.getItem('comentarios')){
+        var comentarios = JSON.parse(localStorage.getItem('comentarios'));
 
+        if (!comentarios[id]) {
+            comentarios[id] = []; 
+        }
+
+        comentarios[id].push(comentario)
+        localStorage.removeItem('comentarios')
+        localStorage.setItem('comentarios',JSON.stringify(comentarios))
+        console.log(comentarios)
+    }
+    else{
+        var comaux = Array();
+        comaux[id] = [];
+        comaux[id].push(comentario)
+        localStorage.setItem('comentarios',JSON.stringify(comaux))
+
+        var template = `
+                <div>
+                    <p><strong>${usr[id][0]}</strong>:${comentarios[id][comentarios[id].length-1]}</p>
+                </div>
+            `
+
+            var div = document.createElement('div');
+            div.innerHTML = template;
+
+            var reviewsContainer = document.getElementsByClassName('user-reviews')[0]; // Obtiene el primer elemento con la clase 'user-reviews'
+            reviewsContainer.appendChild(div);
+    }
+
+    var template = `
+                <div>
+                    <p><strong>${usr[id][0]}</strong>:${comentarios[id][comentarios[id].length-1]}</p>
+                </div>
+            `
+
+    var div = document.createElement('div');
+    div.innerHTML = template;
+
+    var reviewsContainer = document.getElementsByClassName('user-reviews')[0]; // Obtiene el primer elemento con la clase 'user-reviews'
+    reviewsContainer.appendChild(div);
 }

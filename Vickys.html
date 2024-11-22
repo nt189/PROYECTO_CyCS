@@ -7,7 +7,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
     <link rel="stylesheet" href="css/Main.css">
     <link rel="stylesheet" href="css/restaurantes.css">
-
+    <style>
+        #review-btn-share   {
+            display: block;
+            width: 100%;
+            background-color: #3b5998; /*Azul relajado*/
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+        }
+        #review-btn-share:hover {
+            color: rgb(224, 224, 224);
+        }
+    </style>
 </head>
 <body>
     <header id="header">
@@ -16,7 +30,7 @@
     </header>
 
     <main>
-        <center><h1>Antojitos Vickys</h1></center>
+        <center><h1>Antojitos Vickys</h1></center> <input type="hidden" id="restaurante-nombre" value="Vickys">
 
         <section class="restaurant-detail-view">
             <article>
@@ -43,6 +57,8 @@
                     </div>
                 </div>
             </article>    
+
+            <article id="mainComentarios"></article>
         </section>
     </main>
 
@@ -51,5 +67,6 @@
         <!-- Aquí puedes incluir el contenido de tu footer -->
     </footer>
     <script src="js/HeadAndFoot.js"></script>
+    <script src="js/Comentarios.js"></script>
 </body>
 </html>

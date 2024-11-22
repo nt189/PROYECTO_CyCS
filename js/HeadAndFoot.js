@@ -16,7 +16,7 @@ function Header() {
                 <div class="nav-links">
                     <a href="Index.html">Inicio</a>
                     <a href="Index.html#map">Mapa</a>
-                    <a href="#restaurantes">Restaurantes</a>
+                    <a href="Index.html#restaurantes">Restaurantes</a>
                     <a id="session" href="cuenta.html">
                         <center><i class="fa-solid fa-user" style="color: #FFFFFF;"></i></center>
                         <p sytle="">Cuenta</p>
@@ -38,8 +38,8 @@ function Header() {
                 </div>
                 <div class="nav-links-nli">
                     <a href="Index.html">Inicio</a>
-                    <a href="#map">Mapa</a>
-                    <a href="#restaurantes">Restaurantes</a>
+                    <a href="Index.html#map">Mapa</a>
+                    <a href="Index.html#restaurantes">Restaurantes</a>
                     <div class="session">
                         <img src=""/>
                         <a href="Login.html">Iniciar Sesión</a>
