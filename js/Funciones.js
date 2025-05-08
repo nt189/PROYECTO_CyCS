@@ -316,3 +316,24 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 });
+
+/***** */
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Cierra todos los acordeones excepto el clickeado
+    document.querySelectorAll('[data-bs-toggle="collapse"]').forEach(button => {
+        button.addEventListener('click', function() {
+            const target = this.getAttribute('data-bs-target');
+            
+            // Cierra todos los demás acordeones
+            document.querySelectorAll('.collapse').forEach(collapse => {
+                if (`#${collapse.id}` !== target) {
+                    const bsCollapse = bootstrap.Collapse.getInstance(collapse);
+                    if (bsCollapse) {
+                        bsCollapse.hide();
+                    }
+                }
+            });
+        });
+    });
+});

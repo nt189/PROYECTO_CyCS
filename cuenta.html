@@ -6,46 +6,109 @@
     <title>Perfil del usuario</title>
     <link rel="stylesheet" href="css/estiloperfil.css">
     <link rel="stylesheet" href="css/Main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 </head>
 <body>
-    <header id="header"></header>
-    <div class="container">
-       <aside class="sidebar">
-        <ul>
-            <li><a href="Index.html">Inicio</a></li>
-            <li><a href="#">Configuración</a></li>
-            <li><a href="#">Ayuda</a></li>
-            <li><a href="#">Soporte</a></li>
-            <li><a onclick="cerrarsession()">Cerrar Sesión</a></li>
+ <!--   <header id="header"></header>-->
+  
+    <aside class="sidebar-desktop d-none d-lg-block">
+        <ul class="nav flex-column pt-3">
+            <li class="nav-item">
+                <a class="nav-link active" href="Index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Configuración</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Ayuda</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Soporte</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick="cerrarsession()">Cerrar Sesión</a>
+            </li>
         </ul>
-       </aside>
-       <main class="content">
-        <section class="profile-section">
-            <img id="user-photo" src="img/Defaultperfil.png" alt="Foto del usuario">
-            <span id="informacion"></span>
-        </section>
-        <section class="comments-section">
-            <h3>Comentarios</h3>
-            <div id="user-comments">
-                <div class="restaurante" id="restaurante-5">
-                    <h2>Tacos al Gusto</h2>
-                    <p>Ubicación: Ciudad B</p>
-                    <p>Tipo: Mexicana</p>
-                    <p>Descripción: Auténticos tacos y sabores de México.</p>
-                </div>
-            
-                <div class="restaurante" id="restaurante-6">x
-                    <h2>El Mar Azul</h2>
-                    <p>Ubicación: Ciudad C</p>
-                    <p>Tipo: Mariscos</p>
-                    <p>Descripción: Delicias del mar frescas y preparadas al momento.</p>
-                </div>
+    </aside>
+
+ 
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-mobile d-lg-none">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Menú</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mobileNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="Index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Configuración</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Ayuda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Soporte</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="cerrarsession()">Cerrar Sesión</a>
+                    </li>
+                </ul>
             </div>
-        </section>
-       </main> 
-       
-    </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <div class="container-fluid p-4">
+            <div class="row">
+                <!-- Sección de perfil -->
+                <section class="profile-section col-lg-4 mx-auto mb-4">
+                    <div class="card shadow">
+                        <div class="card-body text-center">
+                            <img id="user-photo" src="img/Defaultperfil.png" alt="Foto del usuario" 
+                                 class="img-fluid rounded-circle mb-3" style="width: 120px; height: 120px; object-fit: cover; border: 4px solid #333;">
+                            <div id="informacion" class="user-info"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sección de comentarios -->
+                <section class="comments-section col-lg-8">
+                    <div class="card shadow">
+                        <div class="card-header bg-primary text-white">
+                            <h3 class="mb-0">Comentarios</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="user-comments">
+                                <div class="restaurante card mb-3">
+                                    <div class="card-body">
+                                        <h2 class="card-title h5">Tacos al Gusto</h2>
+                                        <p class="card-text"><strong>Ubicación:</strong> Ciudad B</p>
+                                        <p class="card-text"><strong>Tipo:</strong> Mexicana</p>
+                                        <p class="card-text">Auténticos tacos y sabores de México.</p>
+                                    </div>
+                                </div>
+                            
+                                <div class="restaurante card mb-3">
+                                    <div class="card-body">
+                                        <h2 class="card-title h5">El Mar Azul</h2>
+                                        <p class="card-text"><strong>Ubicación:</strong> Ciudad C</p>
+                                        <p class="card-text"><strong>Tipo:</strong> Mariscos</p>
+                                        <p class="card-text">Delicias del mar frescas y preparadas al momento.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
 </body>
-<!-- <script src="js/HeadAndFoot.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 <script src="js/cuenta.js"></script>
 </html>

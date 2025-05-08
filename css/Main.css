@@ -138,17 +138,7 @@ main {
 }
 
 
-/* Map Section */
-.map-container {
-    height: 400px;
-    background: white;
-    border-radius: var(--border-radius);
-    margin-bottom: 2rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    align-content: center;
-}
 
-/* Restaurant Cards */
 .restaurants-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -293,10 +283,7 @@ footer {
         justify-content: center;
     }
 
-    .map-container {
-        height: 300px;
-    }
-
+    
     .restaurants-grid {
         grid-template-columns: 1fr;
     }
@@ -472,4 +459,21 @@ footer {
 
 .filter-btns li {
     list-style-type: none;
+}
+
+
+.minimap-tooltip .hover-cursor {
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.minimap-tooltip:hover .minimap-content,
+.minimap-tooltip:focus-within .minimap-content {
+    display: block !important;
+}
+@media (max-width: 576px) {
+    .minimap-content {
+        width: 280px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
 }
