@@ -32,40 +32,28 @@ function inicializarEstrellas() {
     });
 }
 
-/*CARGAR COMENTARIOS ESPECIFICOS DEL RESTAURANTE*/
 function comentarios() {
-    if (sessionStorage.getItem('id')) {
-        try {
-            const idRestaurante = document.getElementById('restaurante-id').value;
-            if (!idRestaurante) {
-                console.error('No se encontró ID de restaurante');
-                return;
-            }
+    try {
+        const parametros = new URLSearchParams(window.location.search);
+        const nombre_restaurante = parametros.get("restaurante");
+        const idRestaurante = nombre_restaurante;
+        const todosComentarios = JSON.parse(localStorage.getItem('comentarios')) || {};
+        const comentariosRestaurante = todosComentarios[idRestaurante] || [];
+        const contenedor = document.querySelector('.user-reviews');
 
-            const contenedor = document.querySelector('.user-reviews');
-            if (!contenedor) {
-                console.error('No se encontró el contenedor de comentarios');
-                return;
-            }
-
-            // Mantener el título
+        if (comentariosRestaurante.length === 0) {
+            contenedor.innerHTML += '<p>No hay comentarios para este restaurante.</p>';
+        } else {
             contenedor.innerHTML = '<h3>Reseñas de usuarios:</h3>';
-
-            // Cargar comentarios
-            const todosComentarios = JSON.parse(localStorage.getItem('comentarios')) || {};
-            const comentariosRestaurante = todosComentarios[idRestaurante] || [];
-            
-            console.log('Comentarios a mostrar:', comentariosRestaurante);
-            
             comentariosRestaurante.sort((a, b) => new Date(b.fecha) - new Date(a.fecha)).forEach(comentario => {
-                    mostrarComentario(comentario);
-                });
-
-        } catch (error) {
-            console.error('Error al cargar comentarios:', error);
+                mostrarComentario(comentario);
+            });
         }
+    } catch (error) {
+        console.error('Error al cargar comentarios:', error);
     }
 }
+
 
 /*REINICIO DE ESTRELLAS*/
 function reiniciarEstrellas() {
@@ -74,18 +62,27 @@ function reiniciarEstrellas() {
     });
 }
 
-/*MOSTRAR COMENTARIOS SI ESTA LOGUEADO*/
-function seccioncomentarios() {
+/*REGRISTAR COMENTARIO*/
+function regristar() {
     if (sessionStorage.getItem('id')) {
+        const contenedorComentarios = document.querySelector('.user-reviews');
+        while (contenedorComentarios.firstChild) {
+            contenedorComentarios.removeChild(contenedorComentarios.firstChild);
+        }
+        //Obtener el nombre de local
+        const parametros = new URLSearchParams(window.location.search);
+        const nombre_restaurante = parametros.get("restaurante");
+        console.log(nombre_restaurante); 
+
         const idUsuario = sessionStorage.getItem('id');
-        const idRestaurante = document.getElementById('restaurante-id').value;
+        const idRestaurante = nombre_restaurante;
         const comentarios = JSON.parse(localStorage.getItem('comentarios')) || {};
         const comentariosRestaurante = comentarios[idRestaurante] || [];
-
         const nombreUsuario = JSON.parse(localStorage.getItem('Usuarios'))[idUsuario][0];
-        const comentarioExistente = comentariosRestaurante.find(c => c.usuario === nombreUsuario);
+        const correoUsuario = JSON.parse(localStorage.getItem('Usuarios'))[idUsuario][3];
+        const comentarioExistente = comentariosRestaurante.find(c => c.correo === correoUsuario && c.nombre === nombreUsuario);
 
-        const textoComentario = comentarioExistente ? comentarioExistente.texto : '';  // Asegurando que textoComentario esté definido
+        const textoComentario = comentarioExistente ? comentarioExistente.texto : ''; 
         if (!comentarioExistente) {
             const div = document.createElement('div');
             div.id = 'formulario-registrar';
@@ -132,10 +129,7 @@ function seccioncomentarios() {
 
 /*FORMULARIO PARA ACTUALIZAR*/
 function formulario_Actualizado(comentario) {
-    document.querySelectorAll('.comentario-container').forEach(div => {
-        div.style.display = 'none';
-    });
-    document.getElementById('mainComentarios').innerHTML = '';
+    document.querySelector('.user-reviews').style.display = 'none';
     const div = document.createElement('div');
     div.id = 'formulario-edicion';
     div.innerHTML = `
@@ -174,93 +168,94 @@ function formulario_Actualizado(comentario) {
     `;
     document.getElementById('mainComentarios').appendChild(div);
     inicializarEstrellas();
-    
+    const contenedorComentarios = document.querySelector('.user-reviews');
+    while (contenedorComentarios.firstChild) {
+        contenedorComentarios.removeChild(contenedorComentarios.firstChild);
+    }
+    document.querySelector('.user-reviews').style.display = 'block';
+
 }
 
 /*GUARDAR EL COMENTARIO*/
 function cargarcomentario() {
-    try {
-        const idUsuario = sessionStorage.getItem('id');
-        const idRestaurante = document.getElementById('restaurante-id').value;
-        const textoComentario = document.getElementById('comentario').value;
-        const usr = JSON.parse(localStorage.getItem('Usuarios'));
+    // Obtener el nombre del restaurante
+    const parametros = new URLSearchParams(window.location.search);
+    const nombre_restaurante = parametros.get("restaurante");
 
-        if (!idUsuario || !usr) {
-            alert('Debes iniciar sesión para comentar');
-            return;
-        }
+    const idUsuario = sessionStorage.getItem('id');
+    const idRestaurante = nombre_restaurante;
+    const textoComentario = document.getElementById('comentario').value;
+    const usr = JSON.parse(localStorage.getItem('Usuarios'));
+    const nombreUsuario = usr[idUsuario][0]; 
+    const correoUsuario = usr[idUsuario][3];
 
-        if (!textoComentario.trim()) {
-            alert('Por favor escribe un comentario');
-            return;
-        }
-
-        // Obtener calificaciones
-        const ratings = {
-            Calcom: document.querySelectorAll('.Calcom .star.checked').length,
-            SerCli: document.querySelectorAll('.SerCli .star.checked').length,
-            CalPre: document.querySelectorAll('.CalPre .star.checked').length,
-            Amb: document.querySelectorAll('.Amb .star.checked').length,
-            Sos: document.querySelectorAll('.Sos .star.checked').length
-        };
-
-        // Crear objeto comentario
-        const nuevoComentario = {
-            texto: textoComentario,
-            calificaciones: ratings,
-            usuario: usr[idUsuario][0],
-            fecha: new Date().toISOString()
-        };
-
-        // Guardar en localStorage
-        let todosComentarios = JSON.parse(localStorage.getItem('comentarios')) || {};
-        
-        if (!todosComentarios[idRestaurante]) {
-            todosComentarios[idRestaurante] = [];
-        }
-
-        // Actualiza el comentario
-        const comentariosRestaurante = todosComentarios[idRestaurante];
-        const indexExistente = comentariosRestaurante.findIndex(c => c.usuario === usr[idUsuario][0]);
-        if (indexExistente !== -1) {
-            comentariosRestaurante[indexExistente] = nuevoComentario;
-        } else {
-            comentariosRestaurante.push(nuevoComentario);
-        }
-        localStorage.setItem('comentarios', JSON.stringify(todosComentarios));
-
-        // Mostrar el nuevo comentario
-        document.querySelector('.user-reviews').innerHTML = '<h3>Reseñas de usuarios:</h3>';
-        comentarios();
-
-        // Limpiar el textarea y las estrellas
-        document.getElementById('comentario').value = '';
-        reiniciarEstrellas();
-
-        const ComentarioRegistrado = document.getElementById('formulario-registrar');
-        if (ComentarioRegistrado) {
-            ComentarioRegistrado.remove();
-        }
-
-        // Ocultar el formulario de actualizar el comentario
-        const ComentarioActualizado = document.getElementById('formulario-edicion');
-        if (ComentarioActualizado) {
-            ComentarioActualizado.style.display = 'none';
-        }
-
-        console.log('Datos guardados:', JSON.parse(localStorage.getItem('comentarios')));
-        const formAgregar = document.getElementById('formulario-registrar');
-        if (formAgregar) {
-            formAgregar.remove();
-        }
-        const formEdicion = document.getElementById('formulario-edicion');
-        if (formEdicion) {
-            formEdicion.remove();
-        }
-    } catch (error) {
-        console.error('Error al guardar comentario:', error);
-        alert('Ocurrió un error al guardar el comentario');
+    if (!textoComentario.trim()) {
+        alert('Por favor escribe un comentario');
+        return;
     }
+
+    // Obtener calificaciones
+    const ratings = {
+        Calcom: document.querySelectorAll('.Calcom .star.checked').length,
+        SerCli: document.querySelectorAll('.SerCli .star.checked').length,
+        CalPre: document.querySelectorAll('.CalPre .star.checked').length,
+        Amb: document.querySelectorAll('.Amb .star.checked').length,
+        Sos: document.querySelectorAll('.Sos .star.checked').length
+    };
+
+
+    const nuevoComentario = {
+        texto: textoComentario,
+        calificaciones: ratings,
+        nombre: nombreUsuario,
+        correo: correoUsuario,
+        fecha: new Date().toISOString()
+    };
+
+    // Guardar en localStorage
+    let todosComentarios = JSON.parse(localStorage.getItem('comentarios')) || {};
+    
+    if (!todosComentarios[idRestaurante]) {
+        todosComentarios[idRestaurante] = [];
+    }
+
+    // Actualiza el comentario
+    const comentarioRestaurante = todosComentarios[idRestaurante];
+     const indexExistente = comentarioRestaurante.findIndex(c => c.nombre === nombreUsuario && c.correo === correoUsuario);
+    if (indexExistente !== -1) {
+        comentarioRestaurante[indexExistente] = nuevoComentario;
+    } else {
+        comentarioRestaurante.push(nuevoComentario);
+    }
+    localStorage.setItem('comentarios', JSON.stringify(todosComentarios));
+    console.log(todosComentarios)
+
+    // Limpiar el textarea y las estrellas
+    document.getElementById('comentario').value = '';
+    reiniciarEstrellas();
+
+    const ComentarioRegistrado = document.getElementById('formulario-registrar');
+    if (ComentarioRegistrado) {
+        ComentarioRegistrado.remove();
+    }
+
+    // Ocultar el formulario de actualizar el comentario
+    const ComentarioActualizado = document.getElementById('formulario-edicion');
+    if (ComentarioActualizado) {
+        ComentarioActualizado.style.display = 'none';
+    }
+
+    console.log('Datos guardados:', JSON.parse(localStorage.getItem('comentarios')));
+    const formAgregar = document.getElementById('formulario-registrar');
+    if (formAgregar) {
+        formAgregar.remove();
+    }
+    const formEdicion = document.getElementById('formulario-edicion');
+    if (formEdicion) {
+        formEdicion.remove();
+    }
+    // Mostrar el nuevo comentario
+    comentarios();
 }
 
 /*MUESTRA EL COMENTARIO*/
@@ -278,19 +273,23 @@ function mostrarComentario(comentario) {
             </div>
         `;
     }
-
-    const idUsuario = sessionStorage.getItem('id');
+    console.log(localStorage.getItem('Usuarios'));
     const usr = JSON.parse(localStorage.getItem('Usuarios')) || {};
-    const nombreUsuario = usr[idUsuario]?.[0];
+    const idUsuario = sessionStorage.getItem('id');
+    const usuarioData = usr[idUsuario];
+    console.log(usuarioData); 
+    const correoUsuario = usr[idUsuario]?.[3];
+    const nombreUsuario = usr[idUsuario]?.[0]; 
+    const esComentarioDelUsuario = comentario.correo === correoUsuario;
 
-    const esComentarioDelUsuario = comentario.usuario === nombreUsuario;
 
     const div = document.createElement('div');
     div.classList.add('comentario-container');
+    div.style.marginBottom = '15px';
 
     let template = `
         <div class="comentario-box">
-            <p class="comentario-header"><strong>${comentario.usuario}</strong> (${new Date(comentario.fecha).toLocaleString()})</p>
+            <p class="comentario-header"><strong>${comentario.nombre}</strong> (${new Date(comentario.fecha).toLocaleString()})</p>
             <p class="comentario-text">${comentario.texto}</p>
             <div class="ratings-container">
                 ${estrellasHTML} 
@@ -298,7 +297,8 @@ function mostrarComentario(comentario) {
     `;
     if (esComentarioDelUsuario) {
         template += `
-            <button class="btn" style="color: white; background-color: #003b5c; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;" onmouseover="this.style.backgroundColor='#005f8a'" onmouseout="this.style.backgroundColor='#003b5c'">Editar</button>
+           <button class="btn" style="color: white; background-color: #003b5c; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-top: 3px;" onmouseover="this.style.backgroundColor='#005f8a'" onmouseout="this.style.backgroundColor='#003b5c'">Editar</button>
+
 
         `;
     }
@@ -312,12 +312,12 @@ function mostrarComentario(comentario) {
     contenedor.appendChild(div);
 }
 
+
 /*INICIALIZAR LA PAGINA AL CARGAR*/
 document.addEventListener('DOMContentLoaded', () => {
-    if (sessionStorage.getItem('id')) {
-        const reseñas = document.querySelector('.user-reviews');
-        if (reseñas) reseñas.style.display = 'block';
-    }
-    seccioncomentarios();
-    comentarios();
+    const reseñas = document.querySelector('.user-reviews');
+    if (reseñas) reseñas.style.display = 'block'; 
+    regristar();  
+    comentarios();    
 });
+
