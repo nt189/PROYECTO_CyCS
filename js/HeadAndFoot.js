@@ -13,6 +13,7 @@ function Header() {
                 <div>
                     <center><b style="color: #ffffff; font-size: 32px;">BUAP</b></center>
                 </div>
+                <div class="menu-toggle" onclick="toggleMenu()">☰</div>
                 <div class="nav-links">
                     <a href="Index.html">Inicio</a>
                     <a href="Index.html#map">Mapa</a>
@@ -35,6 +36,7 @@ function Header() {
                 <div>
                     <center><b style="color: #ffffff; font-size: 32px;">BUAP</b></center>
                 </div>
+                <div class="menu-toggle" onclick="toggleMenu()">☰</div>
                 <div class="nav-links">
                     <a href="Index.html">Inicio</a>
                     <a href="Index.html#map">Mapa</a>
@@ -82,6 +84,17 @@ function Footer(){
     document.getElementById('footer').innerHTML = template;
     console.log('footer')
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener("click", () => {
+            navLinks.classList.toggle("show");
+        });
+    }
+});
 
 Header();
 Footer();
