@@ -234,10 +234,11 @@ main {
 
 @media (max-width: 767px) {
     .restaurants-grid {
-        /* Mantenemos el mismo diseño que a 1043px */
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        /* Centramos las tarjetas */
-        justify-items: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    background-color: #f8f9fa;
     }
     
     .restaurant-card {
