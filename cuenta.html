@@ -6,8 +6,6 @@
     <title>Perfil del usuario</title>
     <link rel="stylesheet" href="css/estiloperfil.css">
     <link rel="stylesheet" href="css/Main.css">
-    <!-- Agrega Font Awesome para el ícono de usuario si no lo tienes -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header id="header"></header>
@@ -21,11 +19,6 @@
             <li><a onclick="cerrarsession()">Cerrar Sesión</a></li>
         </ul>
        </aside>
-       <!-- Botón para mostrar/ocultar el sidebar en móviles -->
-       <button class="sidebar-toggle">☰</button>
-       <!-- Overlay para cuando el sidebar está abierto -->
-       <div class="sidebar-overlay"></div>
-       
        <main class="content">
         <section class="profile-section">
             <img id="user-photo" src="img/Defaultperfil.png" alt="Foto del usuario">
@@ -41,7 +34,7 @@
                     <p>Descripción: Auténticos tacos y sabores de México.</p>
                 </div>
             
-                <div class="restaurante" id="restaurante-6">
+                <div class="restaurante" id="restaurante-6">x
                     <h2>El Mar Azul</h2>
                     <p>Ubicación: Ciudad C</p>
                     <p>Tipo: Mariscos</p>
@@ -50,35 +43,8 @@
             </div>
         </section>
        </main> 
+       
     </div>
-
-    <script src="js/cuenta.js"></script>
-    <!-- Agrega este script para el funcionamiento del sidebar -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const sidebar = document.querySelector('.sidebar');
-            const sidebarToggle = document.querySelector('.sidebar-toggle');
-            const sidebarOverlay = document.querySelector('.sidebar-overlay');
-            
-            // Alternar sidebar
-            sidebarToggle.addEventListener('click', function() {
-                sidebar.classList.toggle('active');
-            });
-            
-            // Cerrar sidebar al hacer clic en el overlay
-            sidebarOverlay.addEventListener('click', function() {
-                sidebar.classList.remove('active');
-            });
-            
-            // Cerrar sidebar al seleccionar una opción (en móviles)
-            if (window.innerWidth <= 768) {
-                document.querySelectorAll('.sidebar a').forEach(link => {
-                    link.addEventListener('click', function() {
-                        sidebar.classList.remove('active');
-                    });
-                });
-            }
-        });
-    </script>
 </body>
+<script src="js/cuenta.js"></script>
 </html>
