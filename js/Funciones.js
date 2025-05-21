@@ -8,6 +8,36 @@ const config = {
     }
 }; 
 
+
+document.addEventListener("DOMContentLoaded", function () {
+  const mapTriggers = document.querySelectorAll('.map-hover');
+
+  mapTriggers.forEach((mapTrigger) => {
+    mapTrigger.addEventListener('click', function (e) {
+      e.stopPropagation();
+
+      // Cierra todos los demás antes de abrir el actual
+      mapTriggers.forEach(mt => {
+        if (mt !== mapTrigger) {
+          mt.classList.remove('active');
+        }
+      });
+
+      mapTrigger.classList.toggle('active');
+    });
+  });
+
+  document.addEventListener('click', function () {
+    mapTriggers.forEach((mapTrigger) => {
+      mapTrigger.classList.remove('active');
+    });
+  });
+});   
+
+
+
+
+
 // auth.js
 class AuthService {
     constructor() {
@@ -208,7 +238,7 @@ class MapController {
 
 // searchController.js
 class SearchController {
-    constructor(mapController) {
+   constructor(mapController) {
         this.mapController = mapController;
         this.initEventListeners();
     }
@@ -219,30 +249,27 @@ class SearchController {
             searchInput.addEventListener('input', this.debounce(this.buscarRestaurante.bind(this), 300));
         }
     }
-
-    buscarRestaurante() {
+buscarRestaurante() {
         const termino = document.getElementById("search-input").value.toLowerCase();
         const resultados = document.getElementById("resultados");
-        
-        // Limpiar los resultados en cada búsqueda
         resultados.innerHTML = '';
-    
-        // Si el término está vacío, salir de la función para que no queden resultados
         if (!termino) return;
-    
-        // Filtrar restaurantes
         const coincidencias = restaurantes.filter(restaurante =>
             restaurante.nombre.toLowerCase().includes(termino) ||
             restaurante.tipo.toLowerCase().includes(termino)
         );
-    
-        // Mostrar resultados con enlaces a la página específica de cada restaurante
         if (coincidencias.length > 0) {
             coincidencias.forEach(restaurante => {
                 const li = document.createElement("li");
                 const enlace = document.createElement("a");
-                enlace.href = `${restaurante.pagina}#restaurante-${restaurante.id}`;
-                enlace.textContent = `${restaurante.nombre} - ${restaurante.tipo}`;
+                let nombreRestaurante = restaurante.nombre;
+                if (nombreRestaurante.toLowerCase().includes("antojitos vickys")) {
+                    nombreRestaurante = "Vicky's";
+                }
+                const restauranteCodificado = encodeURIComponent(nombreRestaurante);
+                enlace.href = `Restaurante.html?restaurante=${restauranteCodificado}`;
+enlace.textContent = `${restaurante.nombre} - ${restaurante.tipo}`;
+
                 li.appendChild(enlace);
                 resultados.appendChild(li);
             });
@@ -253,6 +280,10 @@ class SearchController {
             resultados.appendChild(li);
         }
     }
+
+
+
+    
     
 
     debounce(func, wait) {
@@ -267,6 +298,8 @@ class SearchController {
         };
     }
 }
+
+
 
 // main.js
 document.addEventListener('DOMContentLoaded', async () => {
@@ -337,3 +370,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+

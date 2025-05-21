@@ -14,7 +14,9 @@
     <main>
         <section class="search-section">
             <div class="search-bar">
-                <input type="text" id="search-input" placeholder="Buscar restaurante" oninput="buscarRestaurante()">
+               <!--<input type="text" id="search-input" placeholder="Buscar restaurante" oninput="buscarRestaurante()">-->
+               <input type="text" id="search-input" placeholder="Buscar restaurante">
+
                 <ul id="resultados" class="result-list"></ul>
                     
             </div>
@@ -61,31 +63,32 @@
                         <i class="far fa-star"></i>
                         <span>(24 reseñas)</span>
                     </div>    
-                    <div class="restaurant-details">           
-                        <p>
+                    <div class="restaurant-details">        
+
                             <i class="fas fa-map-marker-alt"></i> 
                             <span class="map-hover">
-                                A 10 min de CU
-                                <div id="mapa1" class="mini-map">
-                                    <iframe 
-                                        src="https://www.google.com/maps/embed/v1/place?q=19.004541952178577,-98.20108976314854&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&zoom=15"
-                                        width="200" 
-                                        height="150" 
-                                        style="border:0;" 
-                                        allowfullscreen>
-                                    </iframe>
-                                </div>
+                            📍 A 10 min de CU
+                            <div class="mini-map">
+                                <iframe 
+                                src="https://www.google.com/maps/embed/v1/place?q=19.004541952178577,-98.20108976314854&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&zoom=15"
+                                width="200" 
+                                height="150" 
+                                style="border:0;" 
+                                allowfullscreen>
+                                </iframe>
+                            </div>
                             </span>
-                        </p>
+
+                    
                         <p><i class="far fa-clock"></i> Abierto: 9:00 - 18:00</p>
                     </div>           
                         <div class="price-range">           
                             <span>$40 - $80</span>   
                         </div> 
                 </div>  
-                <div class="review-section" id="review-section-1">          
+             <div class="review-section" id="review-section-vickys" >          
                     <button class="review-btn">Ver Reseñas</button>   
-                        <div class="review-content">  
+                        <div class="review-content" id="review-list-vickys">  
                             <h3>Reseñas</h3> 
                                 <div class="review-item">
                                     <p>¡Excelente comida y servicio!</p>
@@ -101,6 +104,8 @@
                 </div> 
             </article>
         </div>
+
+
         <div class="Contenedor">
             <article class="restaurant-card" id="card2">
                 <div class="restaurant-image">
@@ -117,30 +122,33 @@
                         <span>(24 reseñas)</span>
                     </div>
                     <div class="restaurant-details">
-                        <p>
+                        
                             <i class="fas fa-map-marker-alt"></i> 
-                            <span class="map-hover">
-                                A 10 min de CU
-                                <div id="mapa2" class="mini-map">
-                                    <iframe 
-                                        src="https://www.google.com/maps/embed/v1/place?q=19.004541952178577,-98.20108976314854&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&zoom=15"
-                                        width="200" 
-                                        height="150" 
-                                        style="border:0;" 
-                                        allowfullscreen>
-                                    </iframe>
-                                </div>
+                           
+                               <span class="map-hover">
+                            📍 A 10 min de CU
+                            <div class="mini-map">
+                                <iframe 
+                                src="https://www.google.com/maps/embed/v1/place?q=19.004541952178577,-98.20108976314854&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&zoom=15"
+                                width="200" 
+                                height="150" 
+                                style="border:0;" 
+                                allowfullscreen>
+                                </iframe>
+                            </div>
                             </span>
-                        </p>
+
+                    
+                    
                         <p><i class="far fa-clock"></i> Abierto: 9:00 - 18:00</p>
                     </div>
                     <div class="price-range">
                         <span>$40 - $80</span>
                     </div>
                 </div>
-                <div class="review-section" id="review-section-2">
+               <div class="review-section" id="review-section-frullatti">
                     <button class="review-btn">Ver Reseñas</button>
-                    <div class="review-content">
+                    <div class="review-content" id="review-list-frullatti">
                       <h3>Reseñas</h3>
                       <div class="review-item">
                         <p>¡Delicioso!</p>
@@ -170,30 +178,33 @@
                         <span>(24 reseñas)</span>
                     </div>
                     <div class="restaurant-details">
-                        <p>
+                        
                             <i class="fas fa-map-marker-alt"></i> 
+                            
                             <span class="map-hover">
-                                A 10 min de CU
-                                <div id="mapa3" class="mini-map">
-                                    <iframe 
-                                        src="https://www.google.com/maps/embed/v1/place?q=19.004541952178577,-98.20108976314854&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&zoom=15"
-                                        width="200" 
-                                        height="150" 
-                                        style="border:0;" 
-                                        allowfullscreen>
-                                    </iframe>
-                                </div>
+                            📍 A 10 min de CU
+                            <div class="mini-map">
+                                <iframe 
+                                src="https://www.google.com/maps/embed/v1/place?q=19.004541952178577,-98.20108976314854&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&zoom=15"
+                                width="200" 
+                                height="150" 
+                                style="border:0;" 
+                                allowfullscreen>
+                                </iframe>
+                            </div>
                             </span>
-                        </p>
+
+                    
+                    
                         <p><i class="far fa-clock"></i> Abierto: 9:00 - 18:00</p>
                     </div>
                     <div class="price-range">
                         <span>$40 - $80</span>
                     </div>
                 </div>
-                <div class="review-section" id="review-section-3">
+                 <div class="review-section" id="review-section-burguerman">
                     <button class="review-btn">Ver Reseñas</button>
-                    <div class="review-content">
+                    <div class="review-content" id="review-list-burguerman">
                       <h3>Reseñas</h3>
                       <div class="review-item">
                         <p>¡Delicioso!</p>
@@ -208,14 +219,21 @@
             </article>
         </div>
             <script src="js/Reseñas.js"></script>
+                <script src="js/mostrarResenasRecientes.js"></script>
+
     
-            <!-- Más tarjetas de restaurantes... -->
+            
         </section> 
     </main>
 
-    <footer id="footer"></footer>
+   <footer id="footer"></footer>
     <script src="js/restaurantes.js"></script>
+<script>
+     
+</script>
+
+
 </body>
-<script src="js/HeadAndFoot.js"></script> 
+<script src="js/HeadAndFoot.js"></script> <!-- Carga de forma dinamica el footer y header-->
 <script src="js/Iniciadores.LocalStorage.js"></script>
 </html>

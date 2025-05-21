@@ -10,6 +10,10 @@ function Registro2(a,b,c,d,e,f,g){//valida que todos los campos eten llenos
     }
 }
 
+
+//PRUEBA JEST "Comentar cuando no se ocupe"
+//module.exports = Registro2;
+
 function Registro(){ 
     const nombre = document.getElementById('nombre').value;
     const apellidos = document.getElementById('apellidos').value;

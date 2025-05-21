@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informacion del Restaurante</title>
+    <title>Document</title>
     <link rel="stylesheet" href="css/Main.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
@@ -18,11 +18,13 @@
                 <img src="img/vockys.jpg" alt="Foto del restaurante">
             </div>
             <div class="contenido">
-                <h1>Nombre del restaurante</h1>
+                <h1 id="nombreRestaurante">Nombre del restaurante</h1>
+                <div id="mapPreview" class="mini-map" style="display: none; position: absolute;"></div>
                 <p>Descripcion</p>
+                
           
             <div class="horarios">
-                <h3>🕒 Días y Horarios</h3>
+                <h3>🕒 Días y Horarios </h3>
                 <ul>
                     <li>Lunes a Viernes: 12:00 PM - 10:00 PM</li>
                     <li>Sábados: 1:00 PM - 11:00 PM</li>
@@ -58,6 +60,8 @@
     </main>
 
     <footer id="footer"></footer>
+
+   
 </body>
 <script src="js/HeadAndFoot.js"></script>
 <script src="js/Comentarios.js"></script>

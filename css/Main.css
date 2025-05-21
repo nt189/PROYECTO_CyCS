@@ -212,7 +212,6 @@ main {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2rem;
     flex-wrap: wrap;
-    padding: 1rem;
 }
 
 .restaurant-card:hover {
@@ -232,6 +231,7 @@ main {
     position: relative;
 }
 
+
 @media (max-width: 767px) {
     .restaurants-grid {
         /* Mantenemos el mismo diseño que a 1043px */
@@ -250,31 +250,34 @@ main {
         height: 180px; /* Altura más adecuada para móviles */
     }
 }
-
 .restaurant-info {
     padding: 1.5rem;
 }
 
+
 .mini-map {
-    display: none; 
-    position: absolute;
-    z-index: 1000;
-    border: 1px solid #ddd;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    background-color: white;
-    top: 20px; 
-    left: 0;
-}
+      display: none; 
+      position: absolute;
+      z-index: 1000;
+      border: 1px solid #ddd;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      background-color: white;
+      top: 25px; 
+      left: 0;
+    }
 
-.map-hover {
-    position: relative;
-    cursor: pointer;
-}
+    .map-hover {
+      position: relative;
+      cursor: pointer;
+      display: inline-block;
+    }
 
-.map-hover:hover .mini-map {
-    display: block; 
-}
+    .map-hover.active .mini-map {
+      display: block; 
+    }
+
+
 
 .restaurant-title {
     font-size: 1.25rem;
@@ -400,7 +403,6 @@ footer {
         margin: 0 auto;
     }
 }
-
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -415,6 +417,7 @@ footer {
 .fade-in {
     animation: fadeIn 0.5s ease forwards;
 }
+
 
 /* Estilos responsivos para dispositivos móviles y tabletas */
 @media (max-width: 768px) {

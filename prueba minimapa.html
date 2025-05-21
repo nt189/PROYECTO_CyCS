@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mapa Hover Click</title>
+  <style>
+    .mini-map {
+      display: none; 
+      position: absolute;
+      z-index: 1000;
+      border: 1px solid #ddd;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      background-color: white;
+      top: 25px; 
+      left: 0;
+    }
+
+    .map-hover {
+      position: relative;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .map-hover.active .mini-map {
+      display: block; 
+    }
+  </style>
+</head>
+<body>
+
+<span class="map-hover">
+  📍 A 10 min de CU
+  <div class="mini-map">
+    <iframe 
+      src="https://www.google.com/maps/embed/v1/place?q=19.004541952178577,-98.20108976314854&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&zoom=15"
+      width="200" 
+      height="150" 
+      style="border:0;" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</span>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const mapTrigger = document.querySelector('.map-hover');
+
+    mapTrigger.addEventListener('click', function (e) {
+      e.stopPropagation();
+      mapTrigger.classList.toggle('active');
+    });
+
+    document.addEventListener('click', function () {
+      mapTrigger.classList.remove('active');
+    });
+  });
+</script>
+
+</body>
+</html>
