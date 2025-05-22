@@ -443,11 +443,11 @@ footer {
         padding: 0.5rem 0;
     }
     .menu-toggle {
-        display: block;
-        order: 1;
+        display: block; 
         font-size: 1.8rem;
         cursor: pointer;
-        padding: 0 1rem;
+        padding-left: 1rem; 
+        padding-right: 1rem;
     }
     .nav-links {
         display: none;

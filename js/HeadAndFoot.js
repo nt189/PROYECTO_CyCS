@@ -33,7 +33,7 @@ function Header() {
                     <i class="fas fa-utensils"></i>
                     <span>Lobo Croquetas</span>
                 </div>
-                <div>
+                <div class="title">
                     <center><b style="color: #ffffff; font-size: 32px;">BUAP</b></center>
                 </div>
                 <div class="menu-toggle" onclick="toggleMenu()">☰</div>
@@ -85,6 +85,9 @@ function Footer(){
     console.log('footer')
 }
 
+Header();
+Footer();
+
 document.addEventListener("DOMContentLoaded", () => {
     const menuToggle = document.querySelector(".menu-toggle");
     const navLinks = document.querySelector(".nav-links");
@@ -95,6 +98,3 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
-
-Header();
-Footer();
