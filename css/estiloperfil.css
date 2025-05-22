@@ -112,3 +112,38 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
+.menu-btn {
+    display: none;
+    background-color: #003b5c;
+    color: white;
+    padding: 10px;
+    border: none;
+    font-size: 18px;
+    width: 100%;
+    text-align: left;
+}
+
+@media screen and (max-width: 768px) {
+    .menu-btn {
+        display: block;
+    }
+
+    .sidebar {
+        position: absolute;
+        left: -200px;
+        top: 50px;
+        height: calc(100% - 50px);
+        transition: left 0.3s ease;
+        z-index: 999;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+    .content {
+        margin-left: 0;
+        width: 100%;
+    }
+}

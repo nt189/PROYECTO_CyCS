@@ -29,8 +29,8 @@ restaurantesReseñas.forEach(nombre => {
         const div = document.createElement('div');
         div.className = 'review-item';
         div.innerHTML = `
-          <p>${r.texto}</p>
-          <p>- ${r.nombre}</p>
+          <b><span>-${r.nombre}:</span></b>
+          <span>${r.texto}</span>
         `;
         contenedor.appendChild(div);
       });
